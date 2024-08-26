@@ -1,0 +1,28 @@
+SCRIPT: [
+  "bash scripts/run_eval_videoqabench.sh",  # Openset VideoQA tasks
+  "bash scripts/run_eval_multiplechoiceqabench.sh",  # Multiple Choice VideoQA tasks
+  "bash scripts/run_eval_generativebench.sh",  # Text Generation tasks
+]
+
+CUDA_VISIBLE_DEVICES: "0,1,2,3,4,5,6,7"
+CONFIG_NAME: "auto"
+DATA_DIR: [
+  "playground/data/video_qa",
+  "playground/data/multiple_choice_qa",
+  "playground/data/video_qa",
+]
+GT_QA_DIR: "playground/gt_qa_files"
+MODEL_PATH: "liuhaotian/llava-v1.6-34b/"
+OUTPUT_DIR: "outputs/artifacts"
+TEMP_DIR: "outputs/eval_save_dir"
+CONV_MODE: [
+  "image_seq_34b_v3",
+  "multiple_choice_allvideo_34b_v4",
+  "image_seq_34b_v3",
+]
+NUM_FRAMES: "50"
+INPUT_STRUCTURE: "image_seq"
+IMAGE_ASPECT_RATIO: "resize"
+TEMPORAL_AGGREGATION: "slowfast-slow_10frms_spatial_1d_max_pool-fast_4x4"
+ROPE_SCALING_FACTOR: 2
+SAVE_DIR: "outputs/artifacts/logs"
